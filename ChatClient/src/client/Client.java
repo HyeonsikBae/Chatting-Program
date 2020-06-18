@@ -27,10 +27,8 @@ public class Client {
 			socket.connect(socketAddr, 100);
 			InetAddress inetAddr;
 			if((inetAddr = socket.getInetAddress())!=null) {
-				System.out.println("Server connect : " + inetAddr);
 				GUI.textArea.append(inetAddr+" 접속 성공"+"\n");
 			}else {
-				System.out.println("Server connect fail");
 				GUI.textArea.append("접속 실패");
 			}
 			new ClientThread(socket).start();

@@ -28,8 +28,7 @@ public class GUI {
 	JLabel titleLabel = new JLabel("chat :D");
 	
 	JPanel text = new JPanel();
-	public static JTextArea
-	textArea = new JTextArea(25,31);
+	public static JTextArea textArea = new JTextArea(25,31);
 	JScrollPane scroll = new JScrollPane(textArea);
 	
 	JPanel input = new JPanel();

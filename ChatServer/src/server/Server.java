@@ -4,30 +4,25 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 
-import thread.ServerThread;
+import thread.*;
+import gui.*;
 
 public class Server {
 	
 	private static int portNumber;
 	
-	
-	public Server(int portNumber) {
+	public Server() {
 		
 		Socket socket = new Socket();
 		ArrayList<Socket> connectList = new ArrayList<Socket>();
 		
+		
 		try {
 			ServerSocket serverSocket = new ServerSocket(portNumber);
-			while(true) {
-				System.out.println("접속 대기 중");
-				socket = serverSocket.accept();
-				connectList.add(socket);
+			GUI.textArea.append("연결 완료\n");
+			
+			new AcceptThread(socket, serverSocket, connectList).start();
 				
-				System.out.println("Connect IP\t: "+socket.getInetAddress());
-				System.out.println("Connect Port\t: "+socket.getPort());
-				
-				new ServerThread(socket, connectList).start();
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
